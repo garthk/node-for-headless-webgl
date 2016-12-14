@@ -1,5 +1,8 @@
 # Node with support for headless WebGL
 
+[![](https://images.microbadger.com/badges/image/garthk/node-for-headless-webgl.svg)](https://microbadger.com/images/garthk/node-for-headless-webgl "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/garthk/node-for-headless-webgl.svg)](https://microbadger.com/images/garthk/node-for-headless-webgl "Get your own version badge on microbadger.com")
+
 To run headless WebGL tests under Docker with [`gl`][gl], [`#stackgl`][stackgl]'s fork of `headless-gl`, you'll need:
 
 * `node`

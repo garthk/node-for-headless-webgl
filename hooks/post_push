@@ -1,0 +1,18 @@
+#!/bin/bash
+set -euo pipefail
+
+export NODE_VERSION=$(docker run --rm $IMAGE_NAME sh -c 'echo $NODE_VERSION')
+echo docker tag $IMAGE_NAME $DOCKER_REPO:$NODE_VERSION
+echo docker push $DOCKER_REPO:$NODE_VERSION
+
+export NODE_VERSION_MAJOR_MINOR=$(echo $NODE_VERSION | cut -f 1-2 -d .)
+if [ "$NODE_VERSION_MAJOR_MINOR" != "$NODE_VERSION" ]; then
+    echo docker tag $IMAGE_NAME $DOCKER_REPO:$NODE_VERSION_MAJOR_MINOR
+    echo docker push $DOCKER_REPO:$NODE_VERSION_MAJOR_MINOR
+fi
+
+export NODE_VERSION_MAJOR_ONLY=$(echo $NODE_VERSION | cut -f 1 -d .)
+if [ "$NODE_VERSION_MAJOR_ONLY" != "$NODE_VERSION" ]; then
+    echo docker tag $IMAGE_NAME $DOCKER_REPO:$NODE_VERSION_MAJOR_ONLY
+    echo docker push $DOCKER_REPO:$NODE_VERSION_MAJOR_ONLY
+fi
